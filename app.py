@@ -4,11 +4,14 @@ import plotly.express as px
 import yfinance as yf
 from openai import OpenAI
 import re
-import google.generativeai as genai
 
 # ---------------- CONFIG ----------------
 
-genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+client = OpenAI(
+    api_key=st.secrets["OPENROUTER_API_KEY"],  
+    base_url="https://openrouter.ai/api/v1"
+)
+
 st.set_page_config(
     page_title="AI Investment Planner",
     layout="wide"
@@ -108,11 +111,6 @@ Simple • Fast • Personalized
 """, unsafe_allow_html=True)
 
 # ---------------- API ----------------
-
-client = OpenAI(
-    api_key="your api key",
-    base_url="https://openrouter.ai/api/v1"
-)
 
 def get_ai_response(prompt):
 
