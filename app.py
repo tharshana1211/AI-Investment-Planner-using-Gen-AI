@@ -4,9 +4,11 @@ import plotly.express as px
 import yfinance as yf
 from openai import OpenAI
 import re
+import google.generativeai as genai
 
 # ---------------- CONFIG ----------------
 
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 st.set_page_config(
     page_title="AI Investment Planner",
     layout="wide"
